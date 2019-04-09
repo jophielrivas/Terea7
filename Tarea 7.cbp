@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#define MAXFRASE
+
+#define BTMLN 95 // _
+#define UPLN 124 // |
+#define FSLSH 47 // /
+#define SLSH 92 /* \ */
+#define SPCE 32 // " "
+#define OPRNTS 40 // (
+#define CPRNTS 41 // )
+#define XMAX 88 // X
+
+void frase(char[]);
+void munequito();
+void vidas(char [], float);
+
+int main()
+{
+    munequito();
+
+    system("pause");
+    system("cls");
+
+    char sentc[80];
+    frase(sentc);
+
+
+
+
+    return 0;
+}
+
+void munequito()
+{
+    printf("%c%c%c%c%c%c%c%c%c%c%c \n", SPCE, SPCE, SPCE, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c \n", SPCE, SPCE, FSLSH, SPCE, SPCE, SPCE, SPCE, SPCE, SPCE, SPCE, SPCE, SLSH);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c \n", SPCE, SPCE, SLSH, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, FSLSH);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c \n", SPCE, BTMLN, BTMLN, UPLN, BTMLN, BTMLN, SPCE, SPCE, SLSH, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c \n", OPRNTS, SPCE, XMAX, SPCE, XMAX, SPCE, CPRNTS, SPCE, SPCE, SLSH, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c \n", SPCE, SLSH, UPLN, UPLN, UPLN, FSLSH, SPCE, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", SPCE, SPCE, FSLSH, UPLN, SLSH, SPCE, SPCE, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", SPCE, FSLSH, SPCE, UPLN, SPCE, SLSH, SPCE, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", FSLSH, SPCE, SPCE, UPLN, SPCE, SPCE, SLSH, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", SPCE, SPCE, FSLSH, SPCE, SLSH, SPCE, SPCE, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", SPCE, FSLSH, SPCE, SPCE, SPCE, SLSH, SPCE, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c\n", FSLSH, SPCE, SPCE, SPCE, SPCE, SPCE, SLSH, SPCE, SPCE, SPCE, UPLN, UPLN);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c\n", SPCE, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, FSLSH, SPCE, SPCE, SLSH);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n", FSLSH, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, BTMLN, SLSH);
+    printf("Bienvenido al juego de 'El ahorcado'. \n\n" );
+}
+
+void frase(char x[])
+{
+    int n=0;
+
+    printf("Ingrese la frase que con la que desea jugar: \n");
+    printf("Nota: No puede pasar de 80 caracteres.\n\n");
+
+    do{
+        x[n]=getch();
+        if(x[n]=='\b'){
+           printf("\b \b");
+           fflush(stdout);
+           n=n-1;
+        }else
+        if((x[n]>64 && x[n]<91) || (x[n]>96 && x[n]<123))
+            printf("*");
+        else printf("%c", x[n]);
+        if(x[n]==SPCE)
+            printf(" ");
+
+
+        n++;
+    }while((n<=80) && (x[n-1]!= 13));
+}
